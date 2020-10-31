@@ -4,12 +4,16 @@ import 'package:basetraining/auth/auth.dart';
 import 'package:basetraining/auth/auth_provider.dart';
 import 'package:basetraining/components/app_themes.dart';
 import 'package:basetraining/locator.dart';
+import 'package:basetraining/provider/physical_evaluations.dart';
 import 'package:basetraining/provider/training_requests.dart';
 import 'package:basetraining/provider/trainings.dart';
 import 'package:basetraining/provider/users.dart';
 import 'package:basetraining/root/root_page.dart';
 import 'package:basetraining/routes/app_routes.dart';
 import 'package:basetraining/views/home/home_page.dart';
+import 'package:basetraining/views/physical_evaluation/physical_evaluation_detail.dart';
+import 'package:basetraining/views/physical_evaluation/physical_evaluation_form.dart';
+import 'package:basetraining/views/physical_evaluation/physical_evaluation_list.dart';
 import 'package:basetraining/views/training_request/training_request_detail.dart';
 import 'package:basetraining/views/training_request/training_request_form.dart';
 import 'package:basetraining/views/training_request/training_request_list.dart';
@@ -41,6 +45,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (context) => Trainings(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PhysicalEvaluations(),
         ),
       ],
       child: MyApp(),
@@ -142,6 +149,10 @@ class _MyAppState extends State<MyApp> {
           AppRoutes.TRAINING_SCHEDULE_LIST: (_) => TrainingScheduleList(),
           AppRoutes.TRAINING_SCHEDULE_FORM: (_) => TrainingScheduleForm(),
           AppRoutes.TRAINING_SCHEDULE_DETAIL: (_) => TrainingScheduleDetail(),
+          AppRoutes.PHYSICAL_EVALUATION_LIST: (_) => PhysicalEvaluationList(),
+          AppRoutes.PHYSICAL_EVALUATION_FORM: (_) => PhysicalEvaluationForm(),
+          AppRoutes.PHYSICAL_EVALUATION_DETAIL: (_) =>
+              PhysicalEvaluationDetail(),
         },
       ),
     );

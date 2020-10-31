@@ -67,6 +67,12 @@ class _AppDrawerState extends State<AppDrawer> {
                 colorIcon: Colors.lightBlueAccent[400],
                 onTap: () => Navigator.pushReplacementNamed(
                     context, AppRoutes.TRAINING_REQUEST_LIST)),
+            _createDrawerItem(
+                icon: Icons.favorite_border,
+                text: 'Avaliação Física',
+                colorIcon: Colors.greenAccent[400],
+                onTap: () => Navigator.pushReplacementNamed(
+                    context, AppRoutes.PHYSICAL_EVALUATION_LIST)),
             Provider.of<Users>(context, listen: false).userAdm
                 ? _createDrawerItem(
                     icon: Icons.account_box,

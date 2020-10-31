@@ -9,4 +9,7 @@ class AppRoutes {
   static const TRAINING_SCHEDULE_LIST = '/training_schedule_list';
   static const TRAINING_SCHEDULE_FORM = '/training_schedule_form';
   static const TRAINING_SCHEDULE_DETAIL = '/training_schedule_detail';
+  static const PHYSICAL_EVALUATION_LIST = '/physical_evaluation_list';
+  static const PHYSICAL_EVALUATION_FORM = '/physical_evaluation_form';
+  static const PHYSICAL_EVALUATION_DETAIL = '/physical_evaluation_detail';
 }
