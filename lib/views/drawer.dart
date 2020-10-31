@@ -88,7 +88,7 @@ class _AppDrawerState extends State<AppDrawer> {
 
   Widget _createHeader() {
     return Container(
-        color: AppThemes().primaryVariantColor,
+        color: AppThemes().primaryColor,
         height: 92.0,
         child: Container(
           child: DrawerHeader(
@@ -131,6 +131,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   fontStyle: FontStyle.normal,
                   fontSize: 16,
                   letterSpacing: 0.5,
+                  decoration: TextDecoration.underline,
                   fontWeight: FontWeight.w300),
             ),
           )

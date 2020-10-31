@@ -93,7 +93,13 @@ class _MyAppState extends State<MyApp> {
         .currentState
         .showSnackBar(
           SnackBar(
-            content: Text(title + description),
+            content: Text(
+              title + description,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.black87),
+            ),
             backgroundColor: AppThemes().notificationColor,
             action: SnackBarAction(
               label: 'Ver',
@@ -119,13 +125,7 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         title: 'Base Training',
         theme: ThemeData(
-          primaryColor: AppThemes().primaryVariantColor,
-          //accentColor: Colors.pink,
-          //bottomAppBarColor: Colors.orange,
-          //primarySwatch: Colors.red,
-          //cardColor: Colors.brown,
-          //canvasColor: Colors.purple,
-          //backgroundColor: Colors.orange,
+          primaryColor: AppThemes().primaryColor,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         localizationsDelegates: [GlobalMaterialLocalizations.delegate],

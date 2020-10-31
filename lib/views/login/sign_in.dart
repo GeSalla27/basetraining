@@ -56,7 +56,6 @@ class _SignInState extends State<SignIn> {
 
           // register fcm token
           String fcmToken = await _firebaseMessaging.getToken();
-          debugPrint('$fcmToken');
 
           await Provider.of<Users>(context, listen: false).put(
               UserModal(
@@ -74,7 +73,6 @@ class _SignInState extends State<SignIn> {
 
         hideLoading();
         widget.onSignedIn();
-        print('Signed in: $userId');
       } catch (e) {
         hideLoading();
         String message = ValidatorLogin.validate(e.code);

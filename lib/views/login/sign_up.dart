@@ -50,7 +50,6 @@ class _SignUpState extends State<SignUp> {
         final BaseAuth auth = AuthProvider.of(context).auth;
         final String userId =
             await auth.createUserWithEmailAndPassword(_email, _password);
-        print('Signed in: $userId');
         UserModal userFinal = UserModal(
           idAuth: userId,
           name: _name,

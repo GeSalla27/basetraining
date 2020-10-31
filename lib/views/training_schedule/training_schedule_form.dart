@@ -311,7 +311,8 @@ class _TrainingScheduleFormState extends State<TrainingScheduleForm> {
                                         backgroundColor:
                                             AppThemes().secondaryColor);
                                   else if (snapshot.hasError) {
-                                    print('deu pau');
+                                    print(
+                                        'Error 404! Contate o suporte técnico.');
                                   } else if (snapshot.hasData) {
                                     _student = snapshot.data;
                                     List<UserModal> listStudents =
