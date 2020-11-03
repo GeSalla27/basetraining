@@ -134,6 +134,7 @@ class _MyAppState extends State<MyApp> {
     return AuthProvider(
       auth: Auth(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Base Training',
         theme: ThemeData(
           primaryColor: AppThemes().primaryColor,
