@@ -76,7 +76,7 @@ class _TrainingScheduleTileState extends State<TrainingScheduleTile> {
       ]),
       child: ListTile(
         leading: CircleAvatar(
-          child: Icon(Icons.assignment),
+          child: Icon(Icons.fitness_center),
         ),
         onTap: () {
           Navigator.of(context).pushNamed(AppRoutes.TRAINING_SCHEDULE_DETAIL,

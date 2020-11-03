@@ -115,9 +115,13 @@ class _MyAppState extends State<MyApp> {
                     title == 'Sua solicitação de treino foi aprovada. ') {
                   Navigator.of(context)
                       .pushNamed(AppRoutes.TRAINING_REQUEST_LIST);
-                } else if (title == 'Você recebeu um novo treino. ') {
+                } else if (title == 'Você recebeu um novo treino. ' ||
+                    title == 'Você recebeu um novo feedback. ') {
                   Navigator.of(context)
                       .pushNamed(AppRoutes.TRAINING_SCHEDULE_LIST);
+                } else if (title == 'Você tem numa nova avaliação física. ') {
+                  Navigator.of(context)
+                      .pushNamed(AppRoutes.PHYSICAL_EVALUATION_LIST);
                 }
               },
             ),

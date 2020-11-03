@@ -13,6 +13,7 @@ class UserForm extends StatefulWidget {
 
 class _UserFormState extends State<UserForm> {
   final _form = GlobalKey<FormState>();
+  UserModal _user;
   bool _isLoading = false;
   final Map<String, String> _formaData = {};
 
@@ -30,8 +31,8 @@ class _UserFormState extends State<UserForm> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final UserModal user = ModalRoute.of(context).settings.arguments;
-    _loadFormData(user);
+    _user = ModalRoute.of(context).settings.arguments;
+    _loadFormData(_user);
   }
 
   @override
@@ -58,13 +59,17 @@ class _UserFormState extends State<UserForm> {
                 String message =
                     await Provider.of<Users>(context, listen: false).put(
                         UserModal(
-                          id: _formaData['id'],
-                          idAuth: _formaData['idAuth'],
-                          name: _formaData['name'],
-                          email: _formaData['email'],
-                          password: _formaData['password'],
-                          phone: _formaData['phone'],
-                        ),
+                            id: _formaData['id'],
+                            idAuth: _formaData['idAuth'],
+                            instructor: _user.instructor != null
+                                ? _user.instructor
+                                : null,
+                            name: _formaData['name'],
+                            email: _formaData['email'],
+                            password: _formaData['password'],
+                            phone: _formaData['phone'],
+                            fcmToken: _user.fcmToken,
+                            role: _user.role),
                         context);
 
                 setState(() {

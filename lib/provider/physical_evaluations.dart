@@ -57,13 +57,18 @@ class PhysicalEvaluations with ChangeNotifier {
             waist: physicalEvaluation.waist,
             abdomen: physicalEvaluation.abdomen,
             hip: physicalEvaluation.hip,
-            forearm: physicalEvaluation.forearm,
-            arm: physicalEvaluation.arm,
-            thigh: physicalEvaluation.thigh,
-            calf: physicalEvaluation.calf,
+            forearmRight: physicalEvaluation.forearmRight,
+            forearmLeft: physicalEvaluation.forearmLeft,
+            armRight: physicalEvaluation.armRight,
+            armLeft: physicalEvaluation.armLeft,
+            thighRight: physicalEvaluation.thighRight,
+            thighLeft: physicalEvaluation.thighLeft,
+            calfRight: physicalEvaluation.calfRight,
+            calfLeft: physicalEvaluation.calfLeft,
             currentFat: physicalEvaluation.currentFat,
             weightFat: physicalEvaluation.weightFat,
             weightThin: physicalEvaluation.weightThin,
+            note: physicalEvaluation.note,
           );
           _api.updateDocument(objIdCreated.toJson(), value.id);
         });

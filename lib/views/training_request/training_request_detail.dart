@@ -161,51 +161,77 @@ class _TrainingRequestDetailState extends State<TrainingRequestDetail> {
                                   readOnly: true,
                                   initialValue: _formaData['instructor'],
                                   decoration: InputDecoration(
-                                      labelText: 'Professor Resposável'),
+                                      labelText: 'Professor Resposável',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.bold)),
                                 ),
                                 TextFormField(
                                   enabled: false,
                                   readOnly: true,
                                   initialValue: _formaData['student'],
-                                  decoration:
-                                      InputDecoration(labelText: 'Aluno'),
+                                  decoration: InputDecoration(
+                                      labelText: 'Aluno',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.bold)),
                                 ),
                                 TextFormField(
                                   enabled: false,
                                   readOnly: true,
                                   initialValue: _formaData['status'],
-                                  decoration:
-                                      InputDecoration(labelText: 'Status'),
+                                  decoration: InputDecoration(
+                                      labelText: 'Status',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.bold)),
                                 ),
                                 TextFormField(
                                   enabled: false,
                                   readOnly: true,
                                   initialValue: _formaData['testGoal'],
                                   decoration: InputDecoration(
-                                      labelText: 'Meta de Prova'),
+                                      labelText: 'Meta de Prova',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
                                 ),
                                 TextFormField(
                                   enabled: false,
                                   readOnly: true,
                                   initialValue: _formaData['kmGoal'],
-                                  decoration:
-                                      InputDecoration(labelText: 'Meta de Km'),
+                                  decoration: InputDecoration(
+                                      labelText: 'Meta de Km',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
                                 ),
                                 TextFormField(
                                   enabled: false,
                                   readOnly: true,
                                   initialValue: _formaData['paceGoal'],
                                   decoration: InputDecoration(
-                                      labelText: 'Meta de Pace - Ritmo Médio'),
+                                      labelText: 'Meta de Pace - Ritmo Médio',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
                                 ),
                                 TextFormField(
                                   enabled: false,
                                   readOnly: true,
                                   initialValue: _formaData['note'],
-                                  maxLines: 5,
                                   decoration: InputDecoration(
-                                    labelText: 'Observação para Professor',
-                                  ),
+                                      labelText: 'Observação para Professor',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
                                 ),
                               ],
                             ),

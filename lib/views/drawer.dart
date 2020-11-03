@@ -62,7 +62,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 onTap: () => Navigator.pushReplacementNamed(
                     context, AppRoutes.TRAINING_SCHEDULE_LIST)),
             _createDrawerItem(
-                icon: Icons.work,
+                icon: Icons.assignment,
                 text: 'Solicitação de Treinos',
                 colorIcon: Colors.lightBlueAccent[400],
                 onTap: () => Navigator.pushReplacementNamed(

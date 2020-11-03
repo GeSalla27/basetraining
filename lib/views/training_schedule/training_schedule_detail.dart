@@ -1,6 +1,7 @@
 import 'package:basetraining/components/alert.dart';
 import 'package:basetraining/components/app_themes.dart';
 import 'package:basetraining/components/enums/arrayModels.dart';
+import 'package:basetraining/components/notifications.dart';
 import 'package:basetraining/components/validators/validator_input.dart';
 import 'package:basetraining/models/feedback.dart';
 import 'package:basetraining/models/training.dart';
@@ -126,6 +127,16 @@ class _TrainingScheduleDetailState extends State<TrainingScheduleDetail> {
         await showAlertDialog(context, 'Ops!', message);
         return;
       }
+
+      sendMessage(
+          'Você recebeu um novo feedback. ',
+          'Aluno ' +
+              trainingObj.student.name +
+              ': Treino ' +
+              trainingObj.description +
+              ' ' +
+              trainingObj.trainingDate,
+          trainingObj.instructor.fcmToken);
 
       Navigator.of(context).pop();
     } catch (e) {
@@ -598,7 +609,7 @@ class _TrainingScheduleDetailState extends State<TrainingScheduleDetail> {
                                     showLoading();
                                     registerFeedback(_training);
                                   },
-                                  color: Colors.green[200],
+                                  color: Colors.lightGreenAccent[700],
                                   child: Text(
                                     'Registar Feedback',
                                     style: TextStyle(color: Colors.black),

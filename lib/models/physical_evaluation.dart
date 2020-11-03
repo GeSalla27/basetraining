@@ -13,13 +13,18 @@ class PhysicalEvaluationModal {
   final String waist; // Cintura
   final String abdomen; // Abdomen
   final String hip; // Quadril
-  final String forearm; // Ante braço
-  final String arm; // braço
-  final String thigh; // coxa
-  final String calf; // panturrilha
+  final String forearmRight; // Antebraço
+  final String forearmLeft; // Antebraço
+  final String armRight; // braço
+  final String armLeft; // braço
+  final String thighRight; // coxa
+  final String thighLeft; // coxa
+  final String calfRight; // panturrilha
+  final String calfLeft; // panturrilha
   final String currentFat; // gordura atual
   final String weightFat; // peso gordo
   final String weightThin; // peso magro
+  final String note;
 
   const PhysicalEvaluationModal({
     this.id,
@@ -34,13 +39,18 @@ class PhysicalEvaluationModal {
     this.waist,
     this.abdomen,
     this.hip,
-    this.forearm,
-    this.arm,
-    this.thigh,
-    this.calf,
+    this.forearmRight,
+    this.forearmLeft,
+    this.armRight,
+    this.armLeft,
+    this.thighRight,
+    this.thighLeft,
+    this.calfRight,
+    this.calfLeft,
     this.currentFat,
     this.weightFat,
     this.weightThin,
+    this.note,
   });
 
   PhysicalEvaluationModal.fromMap(Map snapshot, String id)
@@ -59,14 +69,19 @@ class PhysicalEvaluationModal {
         chest = snapshot['chest'] ?? '',
         waist = snapshot['waist'] ?? '',
         abdomen = snapshot['abdomen'] ?? '',
-        hip = snapshot['abdomen'] ?? '',
-        forearm = snapshot['forearm'] ?? '',
-        arm = snapshot['arm'] ?? '',
-        thigh = snapshot['thigh'] ?? '',
-        calf = snapshot['calf'] ?? '',
+        hip = snapshot['hip'] ?? '',
+        forearmRight = snapshot['forearmRight'] ?? '',
+        forearmLeft = snapshot['forearmLeft'] ?? '',
+        armRight = snapshot['armRight'] ?? '',
+        armLeft = snapshot['armLeft'] ?? '',
+        thighRight = snapshot['thighRight'] ?? '',
+        thighLeft = snapshot['thighLeft'] ?? '',
+        calfRight = snapshot['calfRight'] ?? '',
+        calfLeft = snapshot['calfLeft'] ?? '',
         currentFat = snapshot['currentFat'] ?? '',
         weightFat = snapshot['weightFat'] ?? '',
-        weightThin = snapshot['weightThin'] ?? '';
+        weightThin = snapshot['weightThin'] ?? '',
+        note = snapshot['note'] ?? '';
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -81,13 +96,18 @@ class PhysicalEvaluationModal {
         'waist': waist,
         'abdomen': abdomen,
         'hip': hip,
-        'forearm': forearm,
-        'arm': arm,
-        'thigh': thigh,
-        'calf': calf,
+        'forearmRight': forearmRight,
+        'forearmLeft': forearmLeft,
+        'armRight': armRight,
+        'armLeft': armLeft,
+        'thighRight': thighRight,
+        'thighLeft': thighLeft,
+        'calfRight': calfRight,
+        'calfLeft': calfLeft,
         'currentFat': currentFat,
         'weightFat': weightFat,
         'weightThin': weightThin,
+        'note': note,
       };
 
   @override

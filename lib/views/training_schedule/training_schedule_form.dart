@@ -138,7 +138,6 @@ class _TrainingScheduleFormState extends State<TrainingScheduleForm> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _training = ModalRoute.of(context).settings.arguments;
-    if (Provider.of<Users>(context, listen: false).userLogged != null) {}
     _loadFormData(_training);
   }
 

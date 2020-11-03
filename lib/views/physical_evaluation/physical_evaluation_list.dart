@@ -40,14 +40,16 @@ class _PhysicalEvaluationListState extends State<PhysicalEvaluationList> {
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400)),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.favorite_border),
-            color: AppThemes().secondaryColor,
-            onPressed: () {
-              Navigator.of(context)
-                  .pushNamed(AppRoutes.PHYSICAL_EVALUATION_FORM);
-            },
-          )
+          Provider.of<Users>(context, listen: false).getUserAdm
+              ? IconButton(
+                  icon: Icon(Icons.favorite_border),
+                  color: AppThemes().secondaryColor,
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(AppRoutes.PHYSICAL_EVALUATION_FORM);
+                  },
+                )
+              : Container()
         ],
       ),
       body: FutureBuilder<List<PhysicalEvaluationModal>>(
@@ -80,7 +82,7 @@ class _PhysicalEvaluationListState extends State<PhysicalEvaluationList> {
                 }
               }
               return Center(
-                  child: Text('Não foram encontradas solicitações de treino'));
+                  child: Text('Não foram encontradas avaliações físicas'));
               break;
           }
           return Column(

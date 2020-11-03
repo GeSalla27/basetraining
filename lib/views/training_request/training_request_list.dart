@@ -41,7 +41,7 @@ class _TrainingRequestListState extends State<TrainingRequestList> {
                 fontWeight: FontWeight.w400)),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.work),
+            icon: Icon(Icons.assignment),
             color: AppThemes().secondaryColor,
             onPressed: () {
               Navigator.of(context).pushNamed(AppRoutes.TRAINING_REQUEST_FORM);

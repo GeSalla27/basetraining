@@ -4,6 +4,7 @@ import 'package:basetraining/provider/users.dart';
 import 'package:basetraining/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class PhysicalEvaluationTile extends StatefulWidget {
@@ -77,7 +78,7 @@ class _PhysicalEvaluationTileState extends State<PhysicalEvaluationTile> {
       ]),
       child: ListTile(
         leading: CircleAvatar(
-          child: Icon(Icons.assignment),
+          child: Icon(Icons.favorite_border),
         ),
         onTap: () {
           Navigator.of(context).pushNamed(AppRoutes.PHYSICAL_EVALUATION_DETAIL,
@@ -95,7 +96,7 @@ class _PhysicalEvaluationTileState extends State<PhysicalEvaluationTile> {
                 style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal),
               ),
               Text(
-                '${widget.physicalEvaluation.evaluationDate}',
+                '${DateFormat("dd/MM/yyyy").format(widget.physicalEvaluation.evaluationDate)}',
                 style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal),
               ),
             ]),

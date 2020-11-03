@@ -1,9 +1,7 @@
 import 'package:basetraining/components/app_themes.dart';
 import 'package:basetraining/models/physical_evaluation.dart';
-import 'package:basetraining/models/user.dart';
-import 'package:basetraining/provider/users.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class PhysicalEvaluationDetail extends StatefulWidget {
   @override
@@ -14,67 +12,8 @@ class PhysicalEvaluationDetail extends StatefulWidget {
 class _PhysicalEvaluationDetailState extends State<PhysicalEvaluationDetail> {
   final _form = GlobalKey<FormState>();
   final Map<String, String> _formaData = {};
-  PhysicalEvaluationModal trainingRequest;
-  UserModal userLogged;
+  PhysicalEvaluationModal _physicalEvaluation;
   bool _isLoading = false;
-
-  Future<void> aproveStudent() async {
-    try {
-      showLoading();
-
-      /*UserModal studentUpdate = UserModal(
-          id: trainingRequest.student.id,
-          idAuth: trainingRequest.student.idAuth,
-          name: trainingRequest.student.name,
-          email: trainingRequest.student.email,
-          password: trainingRequest.student.password,
-          phone: trainingRequest.student.phone,
-          fcmToken: trainingRequest.student.fcmToken,
-          instructor: userLogged);
-
-      String message = await Provider.of<Users>(context, listen: false)
-          .put(studentUpdate, context);
-
-      if (message != null && message.isNotEmpty) {
-        await showAlertDialog(context, 'Ops!', message);
-        return;
-      }
-
-      message = await Provider.of<PhysicalEvaluations>(context, listen: false).put(
-          PhysicalEvaluationModal(
-              id: trainingRequest.id,
-              idInstructor: userLogged.id,
-              idStudent: studentUpdate.id,
-              student: studentUpdate,
-              status: 'Aprovado',
-              instructor: userLogged,
-              kmGoal: trainingRequest.kmGoal,
-              paceGoal: trainingRequest.paceGoal,
-              testGoal: trainingRequest.testGoal,
-              note: trainingRequest.note,
-              requestDate: trainingRequest.requestDate,
-              activities: trainingRequest.activities),
-          context);
-
-      if (message != null && message.isNotEmpty) {
-        await showAlertDialog(context, 'Ops!', message);
-        return;
-      }
-
-      sendMessage(
-          'Sua solicitação de treino foi aprovada. ',
-          'Professor ' +
-              trainingRequest.instructor.name +
-              ' ${DateFormat("dd/MM/yyyy").format(DateTime.now())}',
-          trainingRequest.student.fcmToken);*/
-
-      hideLoading();
-      Navigator.of(context).pop();
-    } catch (e) {
-      print(e.message);
-      hideLoading();
-    }
-  }
 
   showLoading() {
     setState(() {
@@ -88,26 +27,34 @@ class _PhysicalEvaluationDetailState extends State<PhysicalEvaluationDetail> {
     });
   }
 
-  void _loadFormData(PhysicalEvaluationModal trainingRequest) {
-    /*if (trainingRequest != null) {
-      _formaData['id'] = trainingRequest.id;
-      _formaData['idInstructor'] = trainingRequest.idInstructor;
-      _formaData['idStudent'] = trainingRequest.idStudent;
-      _formaData['testGoal'] = trainingRequest.testGoal;
-      _formaData['kmGoal'] = trainingRequest.kmGoal;
-      _formaData['paceGoal'] = trainingRequest.paceGoal;
-      _formaData['note'] = trainingRequest.note;
-      _formaData['student'] = trainingRequest.student.name;
-      _formaData['instructor'] = trainingRequest.instructor.name;
-      _formaData['status'] = trainingRequest.status;
-      _formaData['segunda'] = trainingRequest.activities[0];
-      _formaData['terça'] = trainingRequest.activities[1];
-      _formaData['quarta'] = trainingRequest.activities[2];
-      _formaData['quinta'] = trainingRequest.activities[3];
-      _formaData['sexta'] = trainingRequest.activities[4];
-      _formaData['sabado'] = trainingRequest.activities[5];
-      _formaData['domingo'] = trainingRequest.activities[6];
-    }*/
+  void _loadFormData(PhysicalEvaluationModal physicalEvaluation) {
+    if (physicalEvaluation != null) {
+      _formaData['id'] = physicalEvaluation.id;
+      _formaData['idInstructor'] = physicalEvaluation.idInstructor;
+      _formaData['idStudent'] = physicalEvaluation.idStudent;
+      _formaData['instructor'] = physicalEvaluation.instructor.name;
+      _formaData['student'] = physicalEvaluation.student.name;
+      _formaData['evaluationDate'] =
+          DateFormat("dd/MM/yyyy").format(physicalEvaluation.evaluationDate);
+      _formaData['height'] = physicalEvaluation.height;
+      _formaData['weight'] = physicalEvaluation.weight;
+      _formaData['chest'] = physicalEvaluation.chest;
+      _formaData['waist'] = physicalEvaluation.waist;
+      _formaData['abdomen'] = physicalEvaluation.abdomen;
+      _formaData['hip'] = physicalEvaluation.hip;
+      _formaData['forearmRight'] = physicalEvaluation.forearmRight;
+      _formaData['forearmLeft'] = physicalEvaluation.forearmLeft;
+      _formaData['armRight'] = physicalEvaluation.armRight;
+      _formaData['armLeft'] = physicalEvaluation.armLeft;
+      _formaData['thighRight'] = physicalEvaluation.thighRight;
+      _formaData['thighLeft'] = physicalEvaluation.thighLeft;
+      _formaData['calfRight'] = physicalEvaluation.calfRight;
+      _formaData['calfLeft'] = physicalEvaluation.calfLeft;
+      _formaData['currentFat'] = physicalEvaluation.currentFat;
+      _formaData['weightFat'] = physicalEvaluation.weightFat;
+      _formaData['weightThin'] = physicalEvaluation.weightThin;
+      _formaData['note'] = physicalEvaluation.note;
+    }
   }
 
   @override
@@ -118,11 +65,8 @@ class _PhysicalEvaluationDetailState extends State<PhysicalEvaluationDetail> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    trainingRequest = ModalRoute.of(context).settings.arguments;
-    if (Provider.of<Users>(context, listen: false).userLogged != null) {
-      userLogged = Provider.of<Users>(context, listen: false).userLogged;
-    }
-    _loadFormData(trainingRequest);
+    _physicalEvaluation = ModalRoute.of(context).settings.arguments;
+    _loadFormData(_physicalEvaluation);
   }
 
   @override
@@ -158,78 +102,236 @@ class _PhysicalEvaluationDetailState extends State<PhysicalEvaluationDetail> {
                                   readOnly: true,
                                   initialValue: _formaData['instructor'],
                                   decoration: InputDecoration(
-                                      labelText: 'Professor Resposável'),
+                                      labelText: 'Professor Resposável',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.bold)),
                                 ),
                                 TextFormField(
                                   enabled: false,
                                   readOnly: true,
                                   initialValue: _formaData['student'],
-                                  decoration:
-                                      InputDecoration(labelText: 'Aluno'),
-                                ),
-                                TextFormField(
-                                  enabled: false,
-                                  readOnly: true,
-                                  initialValue: _formaData['status'],
-                                  decoration:
-                                      InputDecoration(labelText: 'Status'),
-                                ),
-                                TextFormField(
-                                  enabled: false,
-                                  readOnly: true,
-                                  initialValue: _formaData['testGoal'],
                                   decoration: InputDecoration(
-                                      labelText: 'Meta de Prova'),
+                                      labelText: 'Aluno',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.bold)),
                                 ),
                                 TextFormField(
                                   enabled: false,
                                   readOnly: true,
-                                  initialValue: _formaData['kmGoal'],
-                                  decoration:
-                                      InputDecoration(labelText: 'Meta de Km'),
-                                ),
-                                TextFormField(
-                                  enabled: false,
-                                  readOnly: true,
-                                  initialValue: _formaData['paceGoal'],
+                                  initialValue: _formaData['evaluationDate'],
                                   decoration: InputDecoration(
-                                      labelText: 'Meta de Pace - Ritmo Médio'),
+                                      labelText: 'Data da Avaliação',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['height'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Altura',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['weight'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Peso',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['chest'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Tórax',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['waist'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Cintura',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['abdomen'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Abdômen',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['hip'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Quadril',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['forearmRight'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Antebraço Direito',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['forearmLeft'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Antebraço Esquerdo',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['armRight'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Braço Direito',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['armLeft'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Braço Esquerdo',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['thighRight'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Coxa Direita',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['thighLeft'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Coxa Esquerda',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['calfRight'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Panturrilha Direita',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['calfLeft'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Panturrilha Esquerda',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['currentFat'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Gordura Atual %',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['weightFat'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Peso Gordo',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
+                                ),
+                                TextFormField(
+                                  enabled: false,
+                                  readOnly: true,
+                                  initialValue: _formaData['weightThin'],
+                                  decoration: InputDecoration(
+                                      labelText: 'Peso Magro',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
                                 ),
                                 TextFormField(
                                   enabled: false,
                                   readOnly: true,
                                   initialValue: _formaData['note'],
-                                  maxLines: 5,
                                   decoration: InputDecoration(
-                                    labelText: 'Observação para Professor',
-                                  ),
+                                      labelText: 'Observação',
+                                      labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13.5,
+                                          fontWeight: FontWeight.normal)),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(height: 8),
-                        (userLogged.role == 'adm' &&
-                                _formaData['status'] == 'Solicitado')
-                            ? Container(
-                                width: 180,
-                                height: 48,
-                                child: RaisedButton(
-                                  onPressed: () {
-                                    showLoading();
-                                    aproveStudent();
-                                  },
-                                  color: Colors.lightGreenAccent[700],
-                                  child: Text(
-                                    'Aprovar Solicitação',
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                ),
-                              )
-                            : Container(),
                       ],
                     ),
                   ),
