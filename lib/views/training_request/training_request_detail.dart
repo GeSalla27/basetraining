@@ -256,7 +256,7 @@ class _TrainingRequestDetailState extends State<TrainingRequestDetail> {
                                     showLoading();
                                     aproveStudent();
                                   },
-                                  color: Colors.lightGreenAccent[700],
+                                  color: AppThemes().signUpColor,
                                   child: Text(
                                     'Aprovar Solicitação',
                                     style: TextStyle(color: Colors.black),

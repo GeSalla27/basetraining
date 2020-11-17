@@ -68,6 +68,40 @@ class _MyAppState extends State<MyApp> {
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   @override
+  Widget build(BuildContext context) {
+    return AuthProvider(
+      auth: Auth(),
+      child: MaterialApp(
+        home: RootPage(),
+        debugShowCheckedModeBanner: false,
+        title: 'Base Training',
+        theme: ThemeData(
+          primaryColor: AppThemes().primaryColor,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        localizationsDelegates: [GlobalMaterialLocalizations.delegate],
+        supportedLocales: [const Locale('pt', 'BR')],
+        routes: {
+          AppRoutes.HOME: (_) => HomePage(),
+          AppRoutes.USER_LIST: (_) => UserList(),
+          AppRoutes.USER_FORM: (_) => UserForm(),
+          AppRoutes.USER_DETAIL: (_) => UserDetail(),
+          AppRoutes.TRAINING_REQUEST_LIST: (_) => TrainingRequestList(),
+          AppRoutes.TRAINING_REQUEST_FORM: (_) => TrainingRequestForm(),
+          AppRoutes.TRAINING_REQUEST_DETAIL: (_) => TrainingRequestDetail(),
+          AppRoutes.TRAINING_SCHEDULE_LIST: (_) => TrainingScheduleList(),
+          AppRoutes.TRAINING_SCHEDULE_FORM: (_) => TrainingScheduleForm(),
+          AppRoutes.TRAINING_SCHEDULE_DETAIL: (_) => TrainingScheduleDetail(),
+          AppRoutes.PHYSICAL_EVALUATION_LIST: (_) => PhysicalEvaluationList(),
+          AppRoutes.PHYSICAL_EVALUATION_FORM: (_) => PhysicalEvaluationForm(),
+          AppRoutes.PHYSICAL_EVALUATION_DETAIL: (_) =>
+              PhysicalEvaluationDetail(),
+        },
+      ),
+    );
+  }
+
+  @override
   void initState() {
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
@@ -108,7 +142,7 @@ class _MyAppState extends State<MyApp> {
                   color: Colors.black87),
             ),
             backgroundColor: AppThemes().notificationColor,
-            action: SnackBarAction(
+            /*action: SnackBarAction(
               label: 'Ver',
               onPressed: () {
                 if (title == 'Nova solicitação de treino. ' ||
@@ -124,42 +158,8 @@ class _MyAppState extends State<MyApp> {
                       .pushNamed(AppRoutes.PHYSICAL_EVALUATION_LIST);
                 }
               },
-            ),
+            ),*/
           ),
         );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AuthProvider(
-      auth: Auth(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Base Training',
-        theme: ThemeData(
-          primaryColor: AppThemes().primaryColor,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        localizationsDelegates: [GlobalMaterialLocalizations.delegate],
-        supportedLocales: [const Locale('pt', 'BR')],
-        home: RootPage(), //UserList(),
-        routes: {
-          AppRoutes.HOME: (_) => HomePage(),
-          AppRoutes.USER_LIST: (_) => UserList(),
-          AppRoutes.USER_FORM: (_) => UserForm(),
-          AppRoutes.USER_DETAIL: (_) => UserDetail(),
-          AppRoutes.TRAINING_REQUEST_LIST: (_) => TrainingRequestList(),
-          AppRoutes.TRAINING_REQUEST_FORM: (_) => TrainingRequestForm(),
-          AppRoutes.TRAINING_REQUEST_DETAIL: (_) => TrainingRequestDetail(),
-          AppRoutes.TRAINING_SCHEDULE_LIST: (_) => TrainingScheduleList(),
-          AppRoutes.TRAINING_SCHEDULE_FORM: (_) => TrainingScheduleForm(),
-          AppRoutes.TRAINING_SCHEDULE_DETAIL: (_) => TrainingScheduleDetail(),
-          AppRoutes.PHYSICAL_EVALUATION_LIST: (_) => PhysicalEvaluationList(),
-          AppRoutes.PHYSICAL_EVALUATION_FORM: (_) => PhysicalEvaluationForm(),
-          AppRoutes.PHYSICAL_EVALUATION_DETAIL: (_) =>
-              PhysicalEvaluationDetail(),
-        },
-      ),
-    );
   }
 }

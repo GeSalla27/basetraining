@@ -90,7 +90,7 @@ class _TrainingScheduleListState extends State<TrainingScheduleList> {
         children: <Widget>[
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(6.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,

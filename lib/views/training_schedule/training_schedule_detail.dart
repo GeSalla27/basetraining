@@ -609,7 +609,7 @@ class _TrainingScheduleDetailState extends State<TrainingScheduleDetail> {
                                     showLoading();
                                     registerFeedback(_training);
                                   },
-                                  color: Colors.lightGreenAccent[700],
+                                  color: AppThemes().signUpColor,
                                   child: Text(
                                     'Registar Feedback',
                                     style: TextStyle(color: Colors.black),
