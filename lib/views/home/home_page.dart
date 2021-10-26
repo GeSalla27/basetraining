@@ -4,6 +4,7 @@ import 'package:basetraining/main.dart';
 import 'package:basetraining/models/user.dart';
 import 'package:basetraining/provider/users.dart';
 import 'package:basetraining/views/drawer.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     Provider.of<Users>(context, listen: false).setScaffoldKey(_scaffoldKey);
     super.initState();
+
+    // try {
+    //   throw ("error testing");
+    // } catch (e) {
+    //   FirebaseCrashlytics.instance.setUserIdentifier(userLogged.id);
+    //   FirebaseCrashlytics.instance.setCustomKey('exeption', e.toString());
+    //   FirebaseCrashlytics.instance.recordError(e, null);
+    // }
   }
 
   Future<void> _signOut(BuildContext context) async {

@@ -26,7 +26,7 @@ class _SignUpState extends State<SignUp> {
   final VoidCallback onSignedIn;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   ApiUsers _api = locator<ApiUsers>();
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  // final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   bool isLoading = false;
   _SignUpState(this.onSignedIn);
@@ -61,7 +61,7 @@ class _SignUpState extends State<SignUp> {
         DocumentReference doc = await _api.addDocument(userFinal.toJson());
         if (doc != null) {
           // register fcm token
-          String fcmToken = await _firebaseMessaging.getToken();
+          // String fcmToken = await _firebaseMessaging.getToken();
           UserModal user = UserModal(
               id: doc.id,
               idAuth: userFinal.idAuth,
@@ -69,8 +69,7 @@ class _SignUpState extends State<SignUp> {
               email: userFinal.email,
               password: userFinal.password,
               phone: userFinal.phone,
-              role: userFinal.role,
-              fcmToken: fcmToken);
+              role: userFinal.role);
           await _api.updateDocument(user.toJson(), doc.id);
           Provider.of<Users>(context, listen: false).setUserLogged(user);
         }

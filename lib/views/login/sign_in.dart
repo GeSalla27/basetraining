@@ -21,7 +21,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final VoidCallback onSignedIn;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  // final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   bool isLoading = false;
   _SignInState(this.onSignedIn);
@@ -55,19 +55,19 @@ class _SignInState extends State<SignIn> {
           userLogged = userProvider.userLogged;
 
           // register fcm token
-          String fcmToken = await _firebaseMessaging.getToken();
+          // String fcmToken = await _firebaseMessaging.getToken();
 
           await Provider.of<Users>(context, listen: false).put(
               UserModal(
-                  id: userLogged.id,
-                  idAuth: userLogged.idAuth,
-                  name: userLogged.name,
-                  email: userLogged.email,
-                  password: userLogged.password,
-                  phone: userLogged.phone,
-                  role: userLogged.role,
-                  instructor: userLogged.instructor,
-                  fcmToken: fcmToken),
+                id: userLogged.id,
+                idAuth: userLogged.idAuth,
+                name: userLogged.name,
+                email: userLogged.email,
+                password: userLogged.password,
+                phone: userLogged.phone,
+                role: userLogged.role,
+                instructor: userLogged.instructor,
+              ),
               context);
         }
 

@@ -25,6 +25,7 @@ import 'package:basetraining/views/user/user_form.dart';
 import 'package:basetraining/views/user/user_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -34,6 +35,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
   await Firebase.initializeApp();
+
   runApp(
     MultiProvider(
       providers: [
@@ -65,7 +67,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   FirebaseFirestore db = FirebaseFirestore.instance;
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  // FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   @override
   Widget build(BuildContext context) {
@@ -103,27 +105,28 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        showMessage(
-            message['notification']['title'], message['notification']['body']);
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        showMessage(
-            message['notification']['title'], message['notification']['body']);
-      },
-      onResume: (Map<String, dynamic> message) async {
-        showMessage(
-            message['notification']['title'], message['notification']['body']);
-      },
-    );
+    // Firebase.initializeApp();
+    // _firebaseMessaging.onMessage(
+    //   onMessage: (Map<String, dynamic> message) async {
+    //     showMessage(
+    //         message['notification']['title'], message['notification']['body']);
+    //   },
+    //   onLaunch: (Map<String, dynamic> message) async {
+    //     showMessage(
+    //         message['notification']['title'], message['notification']['body']);
+    //   },
+    //   onResume: (Map<String, dynamic> message) async {
+    //     showMessage(
+    //         message['notification']['title'], message['notification']['body']);
+    //   },
+    // );
 
-    if (Platform.isIOS) {
-      _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(
-            sound: true, badge: true, alert: true, provisional: false),
-      );
-    }
+    // if (Platform.isIOS) {
+    //   _firebaseMessaging.requestNotificationPermissions(
+    //     const IosNotificationSettings(
+    //         sound: true, badge: true, alert: true, provisional: false),
+    //   );
+    // }
 
     super.initState();
   }

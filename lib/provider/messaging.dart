@@ -29,7 +29,7 @@ class Messaging {
     @required String fcmToken,
   }) =>
       client.post(
-        'https://fcm.googleapis.com/fcm/send',
+        Uri.parse('https://fcm.googleapis.com/fcm/send'),
         body: json.encode({
           'notification': {'body': '$body', 'title': '$title'},
           'priority': 'high',
