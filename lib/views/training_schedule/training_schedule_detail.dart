@@ -89,15 +89,15 @@ class _TrainingScheduleDetailState extends State<TrainingScheduleDetail> {
       }
 
       FeedbackModal feedbackObj = FeedbackModal(
-        status: "Realizado",
-        realizationDate: realizationDate,
-        description: _formFeedBackData['description'],
-        distance: _formFeedBackData['distance'],
-        time: _formFeedBackData['time'],
-        pace: _formFeedBackData['pace'],
-        physicalEffort: _formFeedBackData['physicalEffort'],
-        externalLink: _formFeedBackData['externalLink'],
-      );
+          status: "Realizado",
+          realizationDate: realizationDate,
+          description: _formFeedBackData['description'],
+          distance: _formFeedBackData['distance'],
+          time: _formFeedBackData['time'],
+          pace: _formFeedBackData['pace'],
+          physicalEffort: _formFeedBackData['physicalEffort'],
+          externalLink: _formFeedBackData['externalLink'],
+          note: _formFeedBackData['note']);
 
       String message = await Provider.of<Trainings>(context, listen: false).put(
           TrainingModal(
