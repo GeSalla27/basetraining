@@ -118,7 +118,7 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.black26,
+                          color: Colors.blue[500],
                           blurRadius: 3,
                           spreadRadius: 2),
                     ]),
@@ -153,9 +153,9 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 3,
-                      ),
+                          color: Colors.blue[500],
+                          blurRadius: 3,
+                          spreadRadius: 2),
                     ]),
                 child: TextFormField(
                   validator: NameFieldValidator.validate,
@@ -191,9 +191,9 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 3,
-                      ),
+                          color: Colors.blue[500],
+                          blurRadius: 3,
+                          spreadRadius: 2),
                     ]),
                 child: TextFormField(
                   validator: EmailFieldValidator.validate,
@@ -227,9 +227,9 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 3,
-                      ),
+                          color: Colors.blue[500],
+                          blurRadius: 3,
+                          spreadRadius: 2),
                     ]),
                 child: TextFormField(
                   validator: PasswordFieldValidatorSiginUp.validate,
@@ -264,7 +264,7 @@ class _SignUpState extends State<SignUp> {
                           showLoading();
                           validateAndSubmit();
                         },
-                        color: Colors.white,
+                        color: Colors.blue[700],
                         child: Text(
                           'Cadastrar-se',
                           style: TextStyle(color: AppThemes().secondaryColor),

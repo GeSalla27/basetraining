@@ -148,6 +148,7 @@ class _TrainingScheduleFormState extends State<TrainingScheduleForm> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppThemes().primaryColor,
           bottom: TabBar(
             tabs: [
               Tab(

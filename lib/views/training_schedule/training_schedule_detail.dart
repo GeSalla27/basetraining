@@ -217,6 +217,7 @@ class _TrainingScheduleDetailState extends State<TrainingScheduleDetail> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppThemes().primaryColor,
           bottom: TabBar(
             onTap: (value) => FocusScope.of(context).unfocus(),
             tabs: [

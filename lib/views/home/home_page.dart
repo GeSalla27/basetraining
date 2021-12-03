@@ -1,5 +1,6 @@
 import 'package:basetraining/auth/auth.dart';
 import 'package:basetraining/auth/auth_provider.dart';
+import 'package:basetraining/components/app_themes.dart';
 import 'package:basetraining/main.dart';
 import 'package:basetraining/models/user.dart';
 import 'package:basetraining/provider/users.dart';
@@ -72,6 +73,7 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.black,
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400)),
+        backgroundColor: AppThemes().primaryColor,
       ),
       drawer: AppDrawer(),
       body: Container(

@@ -39,6 +39,7 @@ class _PhysicalEvaluationListState extends State<PhysicalEvaluationList> {
                 color: Colors.black,
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400)),
+        backgroundColor: AppThemes().primaryColor,
         actions: <Widget>[
           Provider.of<Users>(context, listen: false).getUserAdm
               ? IconButton(

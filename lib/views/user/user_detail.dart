@@ -1,3 +1,4 @@
+import 'package:basetraining/components/app_themes.dart';
 import 'package:basetraining/models/user.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,7 @@ class _UserDetailState extends State<UserDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppThemes().primaryColor,
         title: Text('Detalhes Usuário',
             style: TextStyle(
                 color: Colors.black,

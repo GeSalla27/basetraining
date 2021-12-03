@@ -96,6 +96,7 @@ class _PhysicalEvaluationFormState extends State<PhysicalEvaluationForm> {
                 color: Colors.black,
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400)),
+        backgroundColor: AppThemes().primaryColor,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.save),

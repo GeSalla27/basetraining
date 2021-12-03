@@ -32,28 +32,31 @@ class _LoginPageState extends State<LoginPage> {
           body: SignIn(onSignedIn),
         ),
         Scaffold(
+          resizeToAvoidBottomInset: false,
           body: Container(
-            color: AppThemes().primaryColor,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [Colors.purple[700], Colors.blue[700]])),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
-                  height: displayHeight() / 2.5,
+                  height: displayHeight() / 1.5,
                   decoration: BoxDecoration(
-                      color: AppThemes().primaryVariantColor,
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(60),
-                        bottomRight: Radius.circular(60),
-                      )),
+                        bottomLeft: Radius.circular(30),
+                        bottomRight: Radius.circular(30),
+                      ),
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [Colors.purple[700], Colors.blue[700]])),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.fitness_center, //colocar aqui imagem
-                        color: AppThemes().secondaryColor,
-                        size: 100,
-                      ),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Row(
@@ -63,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                             Text(
                               "Basetraining",
                               style: TextStyle(
-                                fontSize: 36,
+                                fontSize: 46,
                                 fontWeight: FontWeight.w300,
                                 color: AppThemes().secondaryVariantColor,
                               ),

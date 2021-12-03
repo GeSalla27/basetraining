@@ -17,6 +17,7 @@ class UserList extends StatelessWidget {
     return Scaffold(
       drawer: AppDrawer(),
       appBar: AppBar(
+        backgroundColor: AppThemes().primaryColor,
         title: Text('Usuários',
             style: TextStyle(
                 color: Colors.black,

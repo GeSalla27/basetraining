@@ -39,6 +39,7 @@ class _UserFormState extends State<UserForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppThemes().primaryColor,
         title: Text('Formulário de Usuário',
             style: TextStyle(
                 color: Colors.black,

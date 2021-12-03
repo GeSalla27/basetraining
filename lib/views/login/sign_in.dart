@@ -116,7 +116,7 @@ class _SignInState extends State<SignIn> {
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.black26,
+                          color: Colors.purple[300],
                           blurRadius: 3,
                           spreadRadius: 2),
                     ]),
@@ -152,7 +152,7 @@ class _SignInState extends State<SignIn> {
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.black26,
+                          color: Colors.purple[300],
                           blurRadius: 3,
                           spreadRadius: 2),
                     ]),
@@ -189,10 +189,9 @@ class _SignInState extends State<SignIn> {
                           showLoading();
                           validateAndSubmit();
                         },
-                        color: Colors.white,
+                        color: Colors.purple[700],
                         child: Text(
                           'Entrar',
-                          style: TextStyle(color: AppThemes().secondaryColor),
                         ),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),

@@ -68,6 +68,7 @@ class _TrainingScheduleListState extends State<TrainingScheduleList> {
       key: _scaffoldKey,
       drawer: AppDrawer(),
       appBar: AppBar(
+        backgroundColor: AppThemes().primaryColor,
         title: Text('Agenda de Treinos',
             style: TextStyle(
                 color: Colors.black,

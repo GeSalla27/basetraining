@@ -78,6 +78,7 @@ class _PhysicalEvaluationDetailState extends State<PhysicalEvaluationDetail> {
                 color: Colors.black,
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400)),
+        backgroundColor: AppThemes().primaryColor,
       ),
       body: _isLoading
           ? Center(
