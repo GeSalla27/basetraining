@@ -186,6 +186,7 @@ class _TrainingScheduleDetailState extends State<TrainingScheduleDetail> {
         _formFeedBackData['distance'] = training.feedback.distance;
         _formFeedBackData['time'] = training.feedback.time;
         _formFeedBackData['pace'] = training.feedback.pace;
+        _formFeedBackData['note'] = training.feedback.note;
         _formFeedBackData['physicalEffort'] = training.feedback.physicalEffort;
         _formFeedBackData['externalLink'] = training.feedback.externalLink;
       } else {
@@ -612,7 +613,7 @@ class _TrainingScheduleDetailState extends State<TrainingScheduleDetail> {
                                   },
                                   color: AppThemes().signUpColor,
                                   child: Text(
-                                    'Registar Feedback',
+                                    'Registrar Feedback',
                                     style: TextStyle(color: Colors.black),
                                   ),
                                   shape: RoundedRectangleBorder(
